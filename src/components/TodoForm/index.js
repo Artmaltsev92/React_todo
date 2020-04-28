@@ -5,6 +5,7 @@ const styles = {
     marginLeft: '2rem'
 }
 
+// props
 export const TodoForm = () => {
     return(
         <div className="input-group" style={styles}>
