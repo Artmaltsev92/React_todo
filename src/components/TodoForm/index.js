@@ -5,6 +5,8 @@ const styles = {
     marginLeft: '2rem'
 }
 
+// обработка нажатия на Enter
+
 // props
 export const TodoForm = () => {
     return(
