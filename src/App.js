@@ -12,6 +12,10 @@ export default function App () {
         ]
     )
 
+    // добавить функцию по созданию todo
+    
+    // добавить функцию по удалению todo
+    
     const ToggleCheckbox = (id) => {
         const newTodos = todos.map(todo => {
             if(todo.id === id) {
