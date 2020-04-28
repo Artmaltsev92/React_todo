@@ -16,6 +16,10 @@ export default function App () {
     
     // добавить функцию по удалению todo
     
+    const AddTodoRow = (todoTask) => {
+        setTodos(...todos, {id: Date.now(), task: todoTask, done:false})
+    }
+
     const ToggleCheckbox = (id) => {
         const newTodos = todos.map(todo => {
             if(todo.id === id) {
@@ -31,10 +35,8 @@ export default function App () {
             <div className="container-fluid">
                 <Header />
                 <br/>
-                // добавить новый пропс
-                <TodoForm />
+                <TodoForm AddTodo={AddTodoRow}/>
                 <br/>
-                // добавить новый пропс onDelete
                 <TodoList todos={todos} onToggle={ToggleCheckbox} />
             </div>
         </>

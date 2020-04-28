@@ -13,7 +13,6 @@ export const TodoList = (props) => {
                 </tr>
             </thead>
             <tbody>
-                // новый пропс onDelete
                 {props.todos.map(todo => {
                     return <TodoItem todo={todo} key={todo.id} onChange={props.onToggle} />
                 })}
