@@ -31,8 +31,10 @@ export default function App () {
             <div className="container-fluid">
                 <Header />
                 <br/>
+                // добавить новый пропс
                 <TodoForm />
                 <br/>
+                // добавить новый пропс onDelete
                 <TodoList todos={todos} onToggle={ToggleCheckbox} />
             </div>
         </>
