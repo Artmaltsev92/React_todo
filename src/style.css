@@ -1,0 +1,10 @@
+
+.all-completed {
+    display: flex;
+    margin: 0 auto;
+    font-size: 24px;
+    opacity: 50%;
+    color: grey;
+    text-align: center;
+    padding-top: 10rem ;
+}

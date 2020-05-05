@@ -1,10 +1,11 @@
 import React from 'react'
 import { TodoItem } from '../TodoItem'
+import {Counter} from '../Counter'
 
 export const TodoList = (props) => {
 
     return (
-        <table className="table" style={{width:'40%', margin:'0 auto'}}> 
+        <table className="table" style={{width:'60%', margin:'0 auto'}}> 
             <thead>
                 <tr>
                     <th>Task</th>
@@ -16,6 +17,8 @@ export const TodoList = (props) => {
                 {props.todos.map(todo => {
                     return <TodoItem todo={todo} key={todo.id} onChange={props.onToggle} />
                 })}
+                
+                
             </tbody>
         </table>
     )

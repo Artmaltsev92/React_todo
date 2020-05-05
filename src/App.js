@@ -1,7 +1,30 @@
 import React, {useState} from 'react';
 import Header from './components/Header';
-import { TodoForm } from './components/TodoForm';
+import { AddToDo } from './components/TodoForm/index';
 import { TodoList } from './components/TodoList';
+import Context from './components/context';
+import {Counter} from './components/Counter'
+
+
+const styles = {
+    allCompleted: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        width: '16rem',
+        textAlign: 'center',
+        fontSize: '24px',
+        opacity: '50%',
+        paddingTop:'10rem',
+        color: 'grey',
+    },
+    done: {
+        textDecoration: 'line-through',
+        color: 'green'
+    }
+}
+
 
 export default function App () {
     const [todos, setTodos] = useState(
@@ -12,13 +35,18 @@ export default function App () {
         ]
     )
 
+    function addTodo(task) {
+        setTodos(todos.concat([{
+        id: Date.now(),
+        task,
+        done:false
+    
+        }]))
+      }
+
+
     // добавить функцию по созданию todo
-    
-    // добавить функцию по удалению todo
-    
-    const AddTodoRow = (todoTask) => {
-        setTodos(...todos, {id: Date.now(), task: todoTask, done:false})
-    }
+
 
     const ToggleCheckbox = (id) => {
         const newTodos = todos.map(todo => {
@@ -30,15 +58,24 @@ export default function App () {
         setTodos(newTodos)
     }
 
+
+    function removeTodo(id) {
+        setTodos(todos.filter(todo=> todo.id!==id))
+      }
+
+    console.log(todos)
     return (
-        <>
+        <Context.Provider value={{ removeTodo }}>
+        <div>
             <div className="container-fluid">
                 <Header />
                 <br/>
-                <TodoForm AddTodo={AddTodoRow}/>
+                <AddToDo onCreate={addTodo}/>
                 <br/>
-                <TodoList todos={todos} onToggle={ToggleCheckbox} />
+    {todos.length ? <TodoList todos={todos} onToggle={ToggleCheckbox} />: <span style={styles.allCompleted}>На текущий момент все!</span> }
+            
             </div>
-        </>
+        </div>
+        </Context.Provider>
     )
 }
